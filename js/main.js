@@ -81,7 +81,7 @@ class Calculator {
                 computation = prev - currnt;
                 break;
 
-            case "*":
+            case "x":
                 computation = prev * currnt;
                 break;
 
