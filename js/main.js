@@ -12,12 +12,19 @@ class Calculator {
         this.crntOperandText = crntOperandText;
         this.clear();
     }
+    playSound(src) {
+        let audio = new Audio(src);
+        audio.play();
+    }
     clear() {
         this.crntOperand = "";
         this.prevOperand = "";
         this.operation = undefined;
+        this.playSound("./sounds/del.mp3");
     }
     delete() {
+        this.playSound("./sounds/delch.mp3");
+
         this.crntOperand = this.crntOperand.toString().slice(0, -1);
     }
     appendNumber(number) {
@@ -25,9 +32,12 @@ class Calculator {
             this.crntOperand = "";
         }
         if (number == "." && this.crntOperand.includes(".")) return;
+        this.playSound("./sounds/num.mp3");
+
         this.crntOperand = this.crntOperand.toString() + number.toString();
     }
     chooseOpeation(operation) {
+        this.playSound("./sounds/operand.mp3");
         if (this.crntOperand === "") return;
         if (this.prevOperand !== "") {
             this.compute();
@@ -58,7 +68,11 @@ class Calculator {
         let computation;
         const prev = parseFloat(this.prevOperand);
         const currnt = parseFloat(this.crntOperand);
-        if (isNaN(prev) || isNaN(currnt)) return;
+        if (isNaN(prev) || isNaN(currnt)) {
+            this.playSound("./sounds/nope.mp3");
+            return;
+        }
+        this.playSound("./sounds/operand.mp3");
         switch (this.operation) {
             case "+":
                 computation = prev + currnt;
