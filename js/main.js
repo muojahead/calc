@@ -23,7 +23,7 @@ class Calculator {
         this.playSound("./sounds/del.mp3");
     }
     delete() {
-        this.playSound("./sounds/delch.mp3");
+        this.playSound("./sounds/del.mp3");
 
         this.crntOperand = this.crntOperand.toString().slice(0, -1);
     }
@@ -32,12 +32,12 @@ class Calculator {
             this.crntOperand = "";
         }
         if (number == "." && this.crntOperand.includes(".")) return;
-        this.playSound("./sounds/num.mp3");
+        this.playSound("./sounds/del.mp3");
 
         this.crntOperand = this.crntOperand.toString() + number.toString();
     }
     chooseOpeation(operation) {
-        this.playSound("./sounds/operand.mp3");
+        this.playSound("./sounds/del.mp3");
         if (this.crntOperand === "") return;
         if (this.prevOperand !== "") {
             this.compute();
