@@ -20,10 +20,10 @@ class Calculator {
         this.crntOperand = "";
         this.prevOperand = "";
         this.operation = undefined;
-        this.playSound("./sounds/del.mp3");
+        this.playSound("./sounds/operand.mp3");
     }
     delete() {
-        this.playSound("./sounds/del.mp3");
+        this.playSound("./sounds/operand.mp3");
 
         this.crntOperand = this.crntOperand.toString().slice(0, -1);
     }
@@ -32,12 +32,12 @@ class Calculator {
             this.crntOperand = "";
         }
         if (number == "." && this.crntOperand.includes(".")) return;
-        this.playSound("./sounds/del.mp3");
+        this.playSound("./sounds/operand.mp3");
 
         this.crntOperand = this.crntOperand.toString() + number.toString();
     }
     chooseOpeation(operation) {
-        this.playSound("./sounds/del.mp3");
+        this.playSound("./sounds/operand.mp3");
         if (this.crntOperand === "") return;
         if (this.prevOperand !== "") {
             this.compute();
@@ -69,7 +69,7 @@ class Calculator {
         const prev = parseFloat(this.prevOperand);
         const currnt = parseFloat(this.crntOperand);
         if (isNaN(prev) || isNaN(currnt)) {
-            this.playSound("./sounds/nope.mp3");
+            this.playSound("./sounds/operand.mp3");
             return;
         }
         this.playSound("./sounds/operand.mp3");
